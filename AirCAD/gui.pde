@@ -35,19 +35,19 @@ public void BusinessSlider(GSlider source, GEvent event) { //_CODE_:BusinessPerc
 } //_CODE_:BusinessPercentage:650300:
 
 public void EconomySideDropFUNC(GDropList source, GEvent event) { //_CODE_:EconomySideDrop:873899:
-  
+  economySidesWidth = int(EconomySideDrop.getSelectedText());
 } //_CODE_:EconomySideDrop:873899:
 
 public void EconomyMidDropFUNC(GDropList source, GEvent event) { //_CODE_:EconomyMidDrop:877961:
-  
+  economyMiddleWidth = int(EconomyMidDrop.getSelectedText());
 } //_CODE_:EconomyMidDrop:877961:
 
 public void BusinessMidDropfunc(GDropList source, GEvent event) { //_CODE_:BusinessMidDrop:668383:
-  
+  businessSidesWidth = int(BusinessSideDrop.getSelectedText());
 } //_CODE_:BusinessMidDrop:668383:
 
 public void BusinessSideDropfnc(GDropList source, GEvent event) { //_CODE_:BusinessSideDrop:965563:
-  
+  businessMiddleWidth = int(BusinessMidDrop.getSelectedText());
 } //_CODE_:BusinessSideDrop:965563:
 
 public void PlaneSizeSliderfunc(GSlider source, GEvent event) { //_CODE_:PlaneSizeSlider:732488:
