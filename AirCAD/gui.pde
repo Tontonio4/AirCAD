@@ -19,38 +19,45 @@ synchronized public void win_draw1(PApplet appc, GWinData data) { //_CODE_:windo
 } //_CODE_:window1:446918:
 
 public void EconomySlider(GSlider source, GEvent event) { //_CODE_:EconomyPercentage:449927:
-  if(EconomyPercent != EconomyPercentage.getValueI()){
-    EconomyPercent = EconomyPercentage.getValueI();
+  if(economyPercent != EconomyPercentage.getValueI()){
+    economyPercent = EconomyPercentage.getValueI();
     BusinessPercentage.setValue(100-EconomyPercentage.getValueI());
+    
   }
   
 } //_CODE_:EconomyPercentage:449927:
 
 public void BusinessSlider(GSlider source, GEvent event) { //_CODE_:BusinessPercentage:650300:
-  if(BusinessPercent != BusinessPercentage.getValueI()){
-    BusinessPercent = BusinessPercentage.getValueI();
+  if(businessPercent != BusinessPercentage.getValueI()){
+    businessPercent = BusinessPercentage.getValueI();
     EconomyPercentage.setValue(100-BusinessPercentage.getValueI());
+    
   }
 
 } //_CODE_:BusinessPercentage:650300:
 
 public void EconomySideDropFUNC(GDropList source, GEvent event) { //_CODE_:EconomySideDrop:873899:
   economySidesWidth = int(EconomySideDrop.getSelectedText());
+  
 } //_CODE_:EconomySideDrop:873899:
 
 public void EconomyMidDropFUNC(GDropList source, GEvent event) { //_CODE_:EconomyMidDrop:877961:
   economyMiddleWidth = int(EconomyMidDrop.getSelectedText());
+  
 } //_CODE_:EconomyMidDrop:877961:
 
 public void BusinessMidDropfunc(GDropList source, GEvent event) { //_CODE_:BusinessMidDrop:668383:
   businessSidesWidth = int(BusinessSideDrop.getSelectedText());
+  
 } //_CODE_:BusinessMidDrop:668383:
 
 public void BusinessSideDropfnc(GDropList source, GEvent event) { //_CODE_:BusinessSideDrop:965563:
   businessMiddleWidth = int(BusinessMidDrop.getSelectedText());
+  
 } //_CODE_:BusinessSideDrop:965563:
 
 public void PlaneSizeSliderfunc(GSlider source, GEvent event) { //_CODE_:PlaneSizeSlider:732488:
+  planeSize = PlaneSizeSlider.getValueI();
   
 } //_CODE_:PlaneSizeSlider:732488:
 

@@ -4,13 +4,14 @@ class Seat_Block {
 
   int numRows, numFirstClassRows, numBusinessRows, numEconomyRows;
   PVector position;
-
-  Seat_Block (int x, int y, int nFCR, int nBR, int nER) {
+  Plane planeIn;
+  
+  Seat_Block (float x, float y, int nFCR, int nBR, int nER, Plane p) {
 
     this.position = new PVector();
     this.position.x = x;
     this.position.y = y;
-
+    this.planeIn = p;
     this.numFirstClassRows = nFCR;
     this.numBusinessRows = nBR;
     this.numEconomyRows = nER;
@@ -21,35 +22,28 @@ class Seat_Block {
   
   ArrayList<Row> makeRows() {
     
-    float xRow = this.position.x - ((firstClassSize+firstClassSpacing)*this.numFirstClassRows + (businessSize+businessSpacing)*this.numBusinessRows + (economySize+economySpacing)*this.numEconomyRows)/2;
+    //float xRow = this.position.x - ((this.planeIn.firstSeatSize+this.planeIn.firstSpacing)*this.numFirstClassRows + (this.planeIn.buisSeatSize+this.planeIn.buisSpacing)*this.numBusinessRows + (this.planeIn.econSeatSize+this.planeIn.econSpacing)*this.numEconomyRows)/2;
+    float xRow = this.position.x;
     ArrayList<Row> rows = new ArrayList<Row>();
     for (int i = 0; i < this.numFirstClassRows; i++) {
     
-      Row row = new FirstClass(xRow, this.position.y);
+      Row row = new FirstClass(xRow, this.position.y, this.planeIn);
       rows.add(row);
-      xRow += firstClassSpacing + firstClassSize;
-    }
-
-    if (this.numFirstClassRows != 0) {
-      xRow = xRow - (firstClassSpacing + firstClassSize)/2;
+      xRow += this.planeIn.firstSpacing + this.planeIn.firstSeatSize;
     }
     
     for (int i = 0; i < this.numBusinessRows; i++) {
 
-      Row row = new Business(xRow, this.position.y);
+      Row row = new Business(xRow, this.position.y, this.planeIn);
       rows.add(row);
-      xRow += businessSpacing+businessSize;
-    }
-
-    if (this.numBusinessRows != 0) {
-      xRow = xRow - (businessSpacing + businessSize)/2;
+      xRow += this.planeIn.buisSpacing+this.planeIn.buisSeatSize;
     }
 
     for (int i = 0; i < this.numEconomyRows; i++){
 
-      Row row = new Economy(xRow, this.position.y);
+      Row row = new Economy(xRow, this.position.y, this.planeIn);
       rows.add(row);
-      xRow += economySpacing + economySize;
+      xRow += this.planeIn.econSpacing + this.planeIn.econSeatSize;
     }
     
     return rows;
@@ -57,7 +51,7 @@ class Seat_Block {
 
   void drawBlock() {
     
-    ArrayList<Row> rows = makeRows();
+    ArrayList<Row> rows = this.makeRows();
     for (int i = 0; i < rows.size(); i++) {
 
       rows.get(i).drawRow();

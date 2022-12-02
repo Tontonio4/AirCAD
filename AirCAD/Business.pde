@@ -1,29 +1,24 @@
 
 class Business extends Row {
 
-  Business (float x, float y) {
+  Business (float x, float y, Plane p) {
 
     this.position = new PVector();
-
+    this.planeIn = p;
     this.position.x = x;
     this.position.y = y;
-    this.seatSize = businessSize;
-    this.numSeats = (2*businessSidesWidth + businessMiddleWidth);
-    this.corridorWidth = (200.0 - this.seatSize*this.numSeats)/2.0;
+    this.seatSize = this.planeIn.buisSeatSize;
+    this.numSeats = (2*this.planeIn.buisSideWidth + this.planeIn.buisMidWidth);
+    this.corridorWidth = (this.planeIn.planeWidth - this.seatSize*this.numSeats)/2.0;
     this.price = this.numSeats*businessPrice;
       
   }
 
-  void drawSeat(float x, float y) {
-    fill(200);
-    square(x, y+this.seatSize/2, this.seatSize);
-  }
-
   void drawRow() {
 
-    float y = this.position.y - (this.seatSize*(businessMiddleWidth/2.0)) - this.corridorWidth - (this.seatSize * (businessSidesWidth/2.0));
+    float y = this.position.y - (this.seatSize*(this.planeIn.buisMidWidth/2.0)) - this.corridorWidth - (this.seatSize * (this.planeIn.buisSideWidth));
     
-    for (int i = 0; i < businessSidesWidth; i++) {
+    for (int i = 0; i < this.planeIn.buisSideWidth; i++) {
 
       this.drawSeat(this.position.x, y);
       y += this.seatSize;
@@ -31,7 +26,7 @@ class Business extends Row {
 
     y += this.corridorWidth;
 
-    for (int i = 0; i < businessMiddleWidth; i++) {
+    for (int i = 0; i < this.planeIn.buisMidWidth; i++) {
 
       this.drawSeat(this.position.x, y);
       y += this.seatSize;  
@@ -39,9 +34,38 @@ class Business extends Row {
     
     y += this.corridorWidth;
     
-    for (int i = 0; i < businessSidesWidth; i++) {
+    for (int i = 0; i < this.planeIn.buisSideWidth; i++) {
 
       this.drawSeat(this.position.x, y);
+      y += this.seatSize;
+    }
+    
+    this.drawBackrests();
+  }
+  
+  void drawBackrests() {
+   
+    float y = this.position.y - (this.seatSize*(this.planeIn.buisMidWidth/2.0)) - this.corridorWidth - (this.seatSize * (this.planeIn.buisSideWidth));
+    
+    for (int i = 0; i < this.planeIn.buisSideWidth; i++) {
+
+      this.drawBackrest(this.position.x, y);
+      y += this.seatSize;
+    }
+
+    y += this.corridorWidth;
+
+    for (int i = 0; i < this.planeIn.buisMidWidth; i++) {
+
+      this.drawBackrest(this.position.x, y);
+      y += this.seatSize;  
+    }
+    
+    y += this.corridorWidth;
+    
+    for (int i = 0; i < this.planeIn.buisSideWidth; i++) {
+
+      this.drawBackrest(this.position.x, y);
       y += this.seatSize;
     }
   }
