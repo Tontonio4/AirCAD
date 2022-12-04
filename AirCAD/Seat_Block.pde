@@ -1,10 +1,9 @@
 
 
-class Seat_Block {
+class Seat_Block extends Plane_Part {
 
   int numRows, numFirstClassRows, numBusinessRows, numEconomyRows;
-  PVector position;
-  Plane planeIn;
+  
   
   Seat_Block (float x, float y, int nFCR, int nBR, int nER, Plane p) {
 
@@ -25,6 +24,7 @@ class Seat_Block {
     //float xRow = this.position.x - ((this.planeIn.firstSeatSize+this.planeIn.firstSpacing)*this.numFirstClassRows + (this.planeIn.buisSeatSize+this.planeIn.buisSpacing)*this.numBusinessRows + (this.planeIn.econSeatSize+this.planeIn.econSpacing)*this.numEconomyRows)/2;
     float xRow = this.position.x;
     ArrayList<Row> rows = new ArrayList<Row>();
+    
     for (int i = 0; i < this.numFirstClassRows; i++) {
     
       Row row = new FirstClass(xRow, this.position.y, this.planeIn);
@@ -49,7 +49,7 @@ class Seat_Block {
     return rows;
   }
 
-  void drawBlock() {
+  void drawMe() {
     
     ArrayList<Row> rows = this.makeRows();
     for (int i = 0; i < rows.size(); i++) {

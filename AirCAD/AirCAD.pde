@@ -1,25 +1,24 @@
 import g4p_controls.*;
-int economyPercent;
-int businessPercent;
+float economyPercent;
+float businessPercent;
 
 //number of seats wide each class is
 int firstClassWidth;
-int businessSidesWidth;
 int economySidesWidth;
-int businessMiddleWidth;
 int economyMiddleWidth;
+int businessSidesWidth;
+int businessMiddleWidth;
 
-//price per seat
-float economyPrice = 10;
-float businessPrice = 10;
 float firstClassPrice = 10;
+float econPrice;
+float buisPrice;
 
 int planeSize;
 
 Plane plane = new Plane();
 
 void setup(){
-  size(1300, 500);
+  size(1300, 700);
   createGUI();
   getValues();
   
@@ -36,20 +35,21 @@ void draw(){
   getValues();
   plane.updateValues();
   plane.drawPlane();
- //line(0,height/2, width, height/2);
   
 }
 
 void getValues() {
- 
-  businessMiddleWidth = int(BusinessMidDrop.getSelectedText());
   businessSidesWidth = int(BusinessSideDrop.getSelectedText());
-  economyMiddleWidth = int(EconomyMidDrop.getSelectedText());
+  businessMiddleWidth = int(BusinessMidDrop.getSelectedText());
   economySidesWidth = int(EconomySideDrop.getSelectedText());
+  economyMiddleWidth = int(EconomyMidDrop.getSelectedText());
   firstClassWidth = 3;
+  
+  econPrice = float(economySeatPrice.getText());
+  buisPrice = float(businessSeatPrice.getText());
   
   planeSize = PlaneSizeSlider.getValueI();
   
-  economyPercent = EconomyPercentage.getValueI();
-  businessPercent = BusinessPercentage.getValueI();
+  economyPercent = EconomyPercentage.getValueI()/100.0;
+  businessPercent = BusinessPercentage.getValueI()/100.0;
 }
