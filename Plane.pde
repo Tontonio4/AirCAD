@@ -47,7 +47,7 @@ class Plane {
 
   }
   
-  
+  //updates the values of all the variables to the main program's global variables
   void updateValues () {
     
     this.firstWidth = firstClassWidth;
@@ -70,7 +70,7 @@ class Plane {
     this.firstSpacing = this.firstSeatSize/3;
     
     
-    
+    //gets the max number of corridors there are in the sections
     if ((this.econMidWidth > 0 && economyPercent > 0) || (this.buisMidWidth > 0 && businessPercent > 0)) this.numCorridors = 2;
     else this.numCorridors = 1;
     
