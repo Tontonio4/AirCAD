@@ -388,7 +388,7 @@ class Plane {
       parts.get(i).upload();
     }
     
-    this.planeInfo.print(this.planeWidth +","+ this.planeLength +","+ this.econSeatSize +","+ this.buisSeatSize +","+ this.econSeatPrice +","+ this.buisSeatPrice);
+    this.planeInfo.print(this.planeWidth +","+ this.planeLength +","+ this.numCorridors +","+ this.econSeatSize +","+ this.buisSeatSize +","+ this.econSeatPrice +","+ this.buisSeatPrice);
     
     this.econPos.flush();
     this.buisPos.flush();
