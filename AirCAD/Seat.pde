@@ -5,7 +5,7 @@ class Seat {
   PVector position;
   boolean mouseOver, selected, bought;
   
-  Seat (float x, float y, float p, float s, boolean b) {
+  Seat (float x, float y, float s, float p, boolean b) {
     
     this.position = new PVector();
     
@@ -18,7 +18,6 @@ class Seat {
     this.bought = b;
     this.selected = false;
     this.mouseOver = false;
-    
   }
   
   void checkMouseOver () {

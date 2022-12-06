@@ -27,10 +27,10 @@ void setup(){
   createGUI();
   getValues();
   
-  Plane plane = new Plane();
+  plane = new Plane();
   plane.updateValues();
   uploaded = false;
-  Plane_Ticket planeTicket = new Plane_Ticket();
+  planeTicket = new Plane_Ticket();
   
 }
 
