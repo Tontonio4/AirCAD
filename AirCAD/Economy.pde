@@ -42,4 +42,40 @@ class Economy extends Row {
     }
 
   }
+  
+  void drawSeat(float x, float y) {
+    fill(180);
+    square(x, y, this.seatSize);
+    rect(x, y-this.seatSize/10, this.seatSize-this.seatSize/6, this.seatSize/5.0);
+    rect(x, y+(this.seatSize*0.9), this.seatSize-this.seatSize/6, this.seatSize/5.0);
+    rect(x+this.seatSize-this.seatSize/6, y, this.seatSize/6, this.seatSize);
+    
+  }
+  
+  void uploadRow() {
+  
+    float y = this.position.y - (this.seatSize*(this.planeIn.econMidWidth/2.0)) - this.corridorWidth - (this.seatSize * (this.planeIn.econSideWidth));
+    
+    for (int i = 0; i < this.planeIn.econSideWidth; i++) {
+      
+      this.planeIn.econPos.println(this.position.x + "," + y);
+      y += this.seatSize;
+    }
+    
+    y += this.corridorWidth;
+
+    for (int i = 0; i < this.planeIn.econMidWidth; i++) {
+
+      this.planeIn.econPos.println(this.position.x + "," + y);
+      y += this.seatSize;  
+    }
+    
+    y += this.corridorWidth;
+    
+    for (int i = 0; i < this.planeIn.econSideWidth; i++) {
+
+      this.planeIn.econPos.println(this.position.x + "," + y);
+      y += this.seatSize;
+    }
+  }
 }

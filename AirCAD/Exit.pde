@@ -17,6 +17,7 @@ class Exit extends Plane_Part {
   }
   
   void drawMe() {
+    
     float bathroomSideSize;
     float bathroomMidSize;
     
@@ -47,5 +48,32 @@ class Exit extends Plane_Part {
       rect(this.position.x, this.position.y+this.planeIn.planeWidth/2-bathroomSideSize, this.size/2, bathroomSideSize);
       
     }
+  }
+  
+  void upload () {
+    
+    float bathroomSideSize;
+    float bathroomMidSize;
+    
+    if (this.planeIn.numCorridors == 2) {
+      
+      if (this.planeIn.econSeatSize * this.planeIn.econMidWidth > this.planeIn.buisSeatSize * this.planeIn.buisMidWidth) {
+        bathroomSideSize = (this.planeIn.planeWidth/2) - (this.planeIn.econSeatSize*this.planeIn.econMidWidth)/2 - this.planeIn.econSeatSize*1.5;
+        bathroomMidSize = this.planeIn.econSeatSize*this.planeIn.econMidWidth;
+      }
+      else {
+        bathroomSideSize = (this.planeIn.planeWidth/2) - (this.planeIn.buisSeatSize*this.planeIn.buisMidWidth)/2 - this.planeIn.econSeatSize*1.5;
+        bathroomMidSize = this.planeIn.buisSeatSize*this.planeIn.buisMidWidth;
+      }
+    }
+    else {
+      
+      bathroomSideSize = (this.planeIn.planeWidth-this.planeIn.econSeatSize*1.5)/2;
+      bathroomMidSize = 0;
+    }
+      
+    
+    this.planeIn.exitPos.print(this.position.x +","+ this.position.y +","+ bathroomSideSize +","+ bathroomMidSize +","+ this.size);
+    
   }
 }

@@ -34,6 +34,11 @@ class Plane {
   
   float totalPrice;
   
+  PrintWriter econPos;
+  PrintWriter buisPos;
+  PrintWriter planeInfo;
+  PrintWriter exitPos;
+
   Plane(){
 
     //uses plane length and % of each class to get the the number of blocks of each class and width to get the side and mid width of each class   
@@ -367,5 +372,32 @@ class Plane {
     
       parts.get(i).drawMe();
     }
+  }
+  
+  void uploadPlane() {
+    
+    ArrayList<Plane_Part> parts = calculatePlane();
+    
+    this.econPos = createWriter("econPos.txt");
+    this.buisPos = createWriter("buisPos.txt");
+    this.planeInfo = createWriter("planeInfo.txt");
+    this.exitPos = createWriter("exitPos.txt");
+    
+    for (int i = 0; i < parts.size(); i++) {
+    
+      parts.get(i).upload();
+    }
+    
+    this.planeInfo.print(this.planeWidth +","+ this.numCorridors +","+ this.econSeatSize +","+ this.buisSeatSize +","+ this.econSeatPrice +","+ this.buisSeatPrice);
+    
+    this.econPos.flush();
+    this.buisPos.flush();
+    this.planeInfo.flush();
+    this.exitPos.flush();
+    
+    this.econPos.close();
+    this.buisPos.close();
+    this.planeInfo.close();
+    this.exitPos.close();
   }
 }

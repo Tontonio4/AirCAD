@@ -6,4 +6,6 @@ class Plane_Part {
   Plane planeIn;
  
   void drawMe () {}
+  
+  void upload () {}
 }

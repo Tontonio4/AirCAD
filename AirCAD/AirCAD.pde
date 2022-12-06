@@ -1,4 +1,9 @@
 import g4p_controls.*;
+
+
+boolean uploaded;
+Plane_Ticket planeTicket;
+
 float economyPercent;
 float businessPercent;
 
@@ -15,7 +20,7 @@ float buisPrice;
 
 int planeSize;
 
-Plane plane = new Plane();
+Plane plane;
 
 void setup(){
   size(1300, 700);
@@ -24,18 +29,31 @@ void setup(){
   
   Plane plane = new Plane();
   plane.updateValues();
-  
-
+  uploaded = false;
+  Plane_Ticket planeTicket = new Plane_Ticket();
   
 }
+
 
 void draw(){
   
   background(255);
-  getValues();
-  plane.updateValues();
-  plane.drawPlane();
+  try {
+  if (uploaded != true) {
+    getValues();
+    plane.updateValues();
+    plane.drawPlane();
+  }
+  else {
+    doStuff();
+  }
   
+  } catch(NullPointerException e) {}
+}
+
+void doStuff () {
+
+  planeTicket.drawPlane(); 
 }
 
 void getValues() {
@@ -52,4 +70,6 @@ void getValues() {
   
   economyPercent = EconomyPercentage.getValueI()/100.0;
   businessPercent = BusinessPercentage.getValueI()/100.0;
+  
+  
 }

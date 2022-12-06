@@ -65,6 +65,12 @@ public void businessSeatPriceChange(GTextField source, GEvent event) { //_CODE_:
 
 } //_CODE_:businessSeatPrice:416079:
 
+public void uploadButtonClicked(GButton source, GEvent event) { //_CODE_:uploadButton:688214:
+  plane.uploadPlane();
+  uploaded = true;
+  Plane_Ticket planeTicket = new Plane_Ticket();
+} //_CODE_:uploadButton:688214:
+
 
 
 // Create all the GUI controls. 
@@ -74,7 +80,7 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  window1 = GWindow.getWindow(this, "Window title", 0, 0, 400, 400, JAVA2D);
+  window1 = GWindow.getWindow(this, "Window title", 0, 0, 400, 500, JAVA2D);
   window1.noLoop();
   window1.setActionOnClose(G4P.KEEP_OPEN);
   window1.addDrawHandler(this, "win_draw1");
@@ -161,6 +167,9 @@ public void createGUI(){
   businessSeatPrice.setText("200.00");
   businessSeatPrice.setOpaque(true);
   businessSeatPrice.addEventHandler(this, "businessSeatPriceChange");
+  uploadButton = new GButton(window1, 70, 381, 260, 80);
+  uploadButton.setText("UPLOAD");
+  uploadButton.addEventHandler(this, "uploadButtonClicked");
   window1.loop();
 }
 
@@ -186,3 +195,4 @@ GTextField economySeatPrice;
 GLabel economyPriceLabel; 
 GLabel businessPriceLabel; 
 GTextField businessSeatPrice; 
+GButton uploadButton; 

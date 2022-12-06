@@ -57,4 +57,14 @@ class Seat_Block extends Plane_Part {
       rows.get(i).drawRow();
     }
   }
+  
+  void upload () {
+    
+    ArrayList<Row> rows = this.makeRows();
+    for (int i = 0; i < rows.size(); i++) {
+
+      rows.get(i).uploadRow();
+    }
+    
+  }
 }
