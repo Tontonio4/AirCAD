@@ -379,11 +379,11 @@ class Plane {
     
     ArrayList<Plane_Part> parts = calculatePlane();
     
-    this.econPos = createWriter("econPos.txt");
-    this.buisPos = createWriter("buisPos.txt");
-    this.planeInfo = createWriter("planeInfo.txt");
-    this.exitInfo = createWriter("exitInfo.txt");
-    this.seatBought = createWriter("seatBought.txt");
+    this.econPos = createWriter("TicketBuy/econPos.txt");
+    this.buisPos = createWriter("TicketBuy/buisPos.txt");
+    this.planeInfo = createWriter("TicketBuy/planeInfo.txt");
+    this.exitInfo = createWriter("TicketBuy/exitInfo.txt");
+    this.seatBought = createWriter("TicketBuy/seatBought.txt");
     
     for (int i = 0; i < parts.size(); i++) { 
       parts.get(i).upload();
