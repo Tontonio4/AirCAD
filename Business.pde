@@ -46,7 +46,7 @@ class Business extends Row {
     float y = this.position.y - (this.seatSize*(this.planeIn.buisMidWidth/2.0)) - this.corridorWidth - (this.seatSize * (this.planeIn.buisSideWidth));
     
     for (int i = 0; i < this.planeIn.buisSideWidth; i++) {
-
+      this.planeIn.seatBought.println("false");
       this.planeIn.buisPos.println(this.position.x + "," + y);
       y += this.seatSize;
     }
@@ -54,7 +54,7 @@ class Business extends Row {
     y += this.corridorWidth;
 
     for (int i = 0; i < this.planeIn.buisMidWidth; i++) {
-
+      this.planeIn.seatBought.println("false");
       this.planeIn.buisPos.println(this.position.x + "," + y);
       y += this.seatSize;  
     }
@@ -62,7 +62,7 @@ class Business extends Row {
     y += this.corridorWidth;
     
     for (int i = 0; i < this.planeIn.buisSideWidth; i++) {
-
+      this.planeIn.seatBought.println("false");
       this.planeIn.buisPos.println(this.position.x + "," + y);
       y += this.seatSize;
     }

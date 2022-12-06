@@ -73,7 +73,7 @@ class Exit extends Plane_Part {
     }
       
     
-    this.planeIn.exitPos.print(this.position.x +","+ this.position.y +","+ bathroomSideSize +","+ bathroomMidSize);
+    this.planeIn.exitInfo.println(this.position.x +","+ this.position.y +","+ bathroomSideSize +","+ bathroomMidSize +","+ this.size);
     
   }
 }

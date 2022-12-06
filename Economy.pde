@@ -48,7 +48,7 @@ class Economy extends Row {
     float y = this.position.y - (this.seatSize*(this.planeIn.econMidWidth/2.0)) - this.corridorWidth - (this.seatSize * (this.planeIn.econSideWidth));
     
     for (int i = 0; i < this.planeIn.econSideWidth; i++) {
-      
+      this.planeIn.seatBought.println("false");
       this.planeIn.econPos.println(this.position.x + "," + y);
       y += this.seatSize;
     }
@@ -56,7 +56,7 @@ class Economy extends Row {
     y += this.corridorWidth;
 
     for (int i = 0; i < this.planeIn.econMidWidth; i++) {
-
+      this.planeIn.seatBought.println("false");
       this.planeIn.econPos.println(this.position.x + "," + y);
       y += this.seatSize;  
     }
@@ -64,7 +64,7 @@ class Economy extends Row {
     y += this.corridorWidth;
     
     for (int i = 0; i < this.planeIn.econSideWidth; i++) {
-
+      this.planeIn.seatBought.println("false");
       this.planeIn.econPos.println(this.position.x + "," + y);
       y += this.seatSize;
     }

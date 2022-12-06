@@ -37,7 +37,8 @@ class Plane {
   PrintWriter econPos;
   PrintWriter buisPos;
   PrintWriter planeInfo;
-  PrintWriter exitPos;
+  PrintWriter exitInfo;
+  PrintWriter seatBought;
 
   Plane(){
 
@@ -47,7 +48,7 @@ class Plane {
 
   }
   
-  //updates the values of all the variables to the main program's global variables
+  
   void updateValues () {
     
     this.firstWidth = firstClassWidth;
@@ -70,7 +71,7 @@ class Plane {
     this.firstSpacing = this.firstSeatSize/3;
     
     
-    //gets the max number of corridors there are in the sections
+    
     if ((this.econMidWidth > 0 && economyPercent > 0) || (this.buisMidWidth > 0 && businessPercent > 0)) this.numCorridors = 2;
     else this.numCorridors = 1;
     
@@ -381,23 +382,25 @@ class Plane {
     this.econPos = createWriter("econPos.txt");
     this.buisPos = createWriter("buisPos.txt");
     this.planeInfo = createWriter("planeInfo.txt");
-    this.exitPos = createWriter("exitPos.txt");
+    this.exitInfo = createWriter("exitInfo.txt");
+    this.seatBought = createWriter("seatBought.txt");
     
-    for (int i = 0; i < parts.size(); i++) {
-    
+    for (int i = 0; i < parts.size(); i++) { 
       parts.get(i).upload();
     }
     
-    this.planeInfo.print(this.planeWidth +","+ this.planeLength +","+ this.numCorridors +","+ this.econSeatSize +","+ this.buisSeatSize +","+ this.econSeatPrice +","+ this.buisSeatPrice);
+    this.planeInfo.print(this.planeWidth +","+ this.numCorridors +","+ this.econSeatSize +","+ this.buisSeatSize +","+ this.econSeatPrice +","+ this.buisSeatPrice);
     
     this.econPos.flush();
     this.buisPos.flush();
     this.planeInfo.flush();
-    this.exitPos.flush();
+    this.exitInfo.flush();
+    this.seatBought.flush();
     
     this.econPos.close();
     this.buisPos.close();
     this.planeInfo.close();
-    this.exitPos.close();
+    this.exitInfo.close();
+    this.seatBought.close();
   }
 }
