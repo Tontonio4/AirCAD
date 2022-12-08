@@ -20,6 +20,7 @@ int economySize = 10;
 int businessSize = 13;
 int firstClassSize = 30;
 
+//calculates how much space between each of the seat types
 float businessSpacing = businessSize/5;
 float economySPacing = economySize/7;
 float firstClassSpacing = firstClassSize/3;
@@ -31,19 +32,21 @@ float firstClassPrice= 10;
 
 Plane plane;
 
+//sets up the screen
 void setup(){
   size(800,600);
   noLoop();
   //resetvalues();
+  //was used before mentioning global variables in plane class
   //plane=new Plane(firstNum, buisnessNum, economyNum, firstLen, buisnessLen, economyLen, firstClassWidth, economySidesWidth, businessMiddleWidth, economyMiddleWidth);
 }
 
-
+//draws the plane
 void draw(){
   plane.Draw();  
-  
 }
 
+//resets the plane values to all 0's for an easy reset
 void resetvalues(){
   firstNum = 0; 
   buisnessNum = 0;
