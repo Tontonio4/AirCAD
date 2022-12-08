@@ -1,5 +1,5 @@
 
-
+//same logic as buisness and economy, but with different variables, is here to be a potential future upgrade for the program
 class FirstClass extends Row{
 
   FirstClass (float x, float y, Plane p) {
