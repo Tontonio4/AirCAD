@@ -9,6 +9,7 @@ int economySidesWidth;
 int economyMiddleWidth;
 int businessSidesWidth;
 int businessMiddleWidth;
+int planeDistance;
 
 float firstClassPrice = 10;
 float econPrice;
@@ -44,9 +45,7 @@ void getValues() {
   economyMiddleWidth = int(EconomyMidDrop.getSelectedText());
   firstClassWidth = 3;
   
-  econPrice = float(economySeatPrice.getText());
-  buisPrice = float(businessSeatPrice.getText());
-  
+  planeDistance = int(travelDistance.getText());
   planeSize = PlaneSizeSlider.getValueI();
   
   economyPercent = EconomyPercentage.getValueI()/100.0;

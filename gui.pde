@@ -57,13 +57,9 @@ public void PlaneSizeSliderfunc(GSlider source, GEvent event) { //_CODE_:PlaneSi
   
 } //_CODE_:PlaneSizeSlider:732488:
 
-public void economySeatPriceChange(GTextField source, GEvent event) { //_CODE_:economySeatPrice:381639:
-
-} //_CODE_:economySeatPrice:381639:
-
-public void businessSeatPriceChange(GTextField source, GEvent event) { //_CODE_:businessSeatPrice:416079:
-
-} //_CODE_:businessSeatPrice:416079:
+public void travelDistanceChange(GTextField source, GEvent event) { //_CODE_:travelDistance:381639:
+  
+} //_CODE_:travelDistance:381639:
 
 public void uploadButtonClicked(GButton source, GEvent event) { //_CODE_:uploadButton:688214:
   plane.uploadPlane();
@@ -136,7 +132,7 @@ public void createGUI(){
   BusinessMidDropTEXT.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   BusinessMidDropTEXT.setText("Business Mid");
   BusinessMidDropTEXT.setOpaque(false);
-  PlaneSizeSlider = new GSlider(window1, 19, 299, 362, 52, 10.0);
+  PlaneSizeSlider = new GSlider(window1, 20, 299, 362, 52, 10.0);
   PlaneSizeSlider.setShowValue(true);
   PlaneSizeSlider.setShowLimits(true);
   PlaneSizeSlider.setLimits(35, 20, 50);
@@ -149,22 +145,14 @@ public void createGUI(){
   PlaneSizeText.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   PlaneSizeText.setText("Plane Size (m)");
   PlaneSizeText.setOpaque(false);
-  economySeatPrice = new GTextField(window1, 47, 237, 120, 22, G4P.SCROLLBARS_NONE);
-  economySeatPrice.setText("100.00");
-  economySeatPrice.setOpaque(true);
-  economySeatPrice.addEventHandler(this, "economySeatPriceChange");
-  economyPriceLabel = new GLabel(window1, 47, 204, 120, 27);
-  economyPriceLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  economyPriceLabel.setText("Economy Price");
-  economyPriceLabel.setOpaque(false);
-  businessPriceLabel = new GLabel(window1, 231, 204, 120, 27);
-  businessPriceLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
-  businessPriceLabel.setText("Business Price");
-  businessPriceLabel.setOpaque(false);
-  businessSeatPrice = new GTextField(window1, 230, 237, 120, 22, G4P.SCROLLBARS_NONE);
-  businessSeatPrice.setText("200.00");
-  businessSeatPrice.setOpaque(true);
-  businessSeatPrice.addEventHandler(this, "businessSeatPriceChange");
+  travelDistance = new GTextField(window1, 139, 233, 120, 22, G4P.SCROLLBARS_NONE);
+  travelDistance.setText("5000");
+  travelDistance.setOpaque(true);
+  travelDistance.addEventHandler(this, "travelDistanceChange");
+  travelDistanceLabel = new GLabel(window1, 139, 199, 120, 27);
+  travelDistanceLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
+  travelDistanceLabel.setText("Travel Distance (km)");
+  travelDistanceLabel.setOpaque(false);
   uploadButton = new GButton(window1, 70, 381, 260, 80);
   uploadButton.setText("UPLOAD");
   uploadButton.addEventHandler(this, "uploadButtonClicked");
@@ -189,8 +177,6 @@ GLabel BusinessSideDropTEXT;
 GLabel BusinessMidDropTEXT; 
 GSlider PlaneSizeSlider; 
 GLabel PlaneSizeText; 
-GTextField economySeatPrice; 
-GLabel economyPriceLabel; 
-GLabel businessPriceLabel; 
-GTextField businessSeatPrice; 
+GTextField travelDistance; 
+GLabel travelDistanceLabel; 
 GButton uploadButton; 
