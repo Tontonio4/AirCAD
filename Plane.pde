@@ -25,6 +25,7 @@ class Plane {
   float econSeatSize;
   float firstSeatSize;
   int numCorridors;
+  int distance;
   
   float buisSeatPrice;
   float econSeatPrice;
@@ -57,8 +58,8 @@ class Plane {
     this.econSideWidth = economySidesWidth;
     this.econMidWidth = economyMiddleWidth;
     
-    this.buisSeatPrice = buisPrice;
-    this.econSeatPrice = econPrice;
+    this.buisSeatPrice = businessPrice();
+    this.econSeatPrice = economyPrice();
     
     this.planeLength = width*0.98;
     
@@ -70,7 +71,7 @@ class Plane {
     this.econSpacing = this.econSeatSize/3;
     this.firstSpacing = this.firstSeatSize/3;
     
-    
+    this.distance = planeDistance;
     
     if ((this.econMidWidth > 0 && economyPercent > 0) || (this.buisMidWidth > 0 && businessPercent > 0)) this.numCorridors = 2;
     else this.numCorridors = 1;
@@ -115,11 +116,12 @@ class Plane {
     }
     else numEconRows = 0;
     
-    this.econTotalPrice = numEconRows*this.econSeatPrice*this.econSideWidth*2 + numEconRows*this.econSeatPrice*this.econMidWidth;
-    this.buisTotalPrice = numBuisRows*this.buisSeatPrice*this.buisSideWidth*2 + numBuisRows*this.buisSeatPrice*this.buisMidWidth;
-    
-    this.totalPrice = this.econTotalPrice+this.buisTotalPrice;
-    
+    this.econTotalPrice = round((numEconRows*this.econSeatPrice*this.econSideWidth*2 + numEconRows*this.econSeatPrice*this.econMidWidth)*100);
+    this.econTotalPrice = this.econTotalPrice/100;
+    this.buisTotalPrice = round((numBuisRows*this.buisSeatPrice*this.buisSideWidth*2 + numBuisRows*this.buisSeatPrice*this.buisMidWidth)*100);
+    this.buisTotalPrice = this.buisTotalPrice/100;
+    this.totalPrice = round((this.econTotalPrice+this.buisTotalPrice)*100);
+    this.totalPrice = this.totalPrice/100;
     exit = new Exit(x, height/2, exitSize, this);
     parts.add(exit);
     x += exitSize;
@@ -367,7 +369,12 @@ class Plane {
     text("Business Class:      $" + this.buisTotalPrice, 330, 75);    
     
     textSize(30);
-    text("Total:  $" + this.totalPrice, 650, 30);
+    text("Total:        $" + this.totalPrice, 650, 30);
+    text("Total Profit: $" + profitCalc(), 650, 70);
+    float percentProfit  = round((profitCalc()/this.totalPrice)*10000);
+    percentProfit = percentProfit/100;
+    text("% Profit: " + percentProfit + "%", 1000, 50);
+    
     
     for (int i = 0; i < parts.size(); i++) {
     
@@ -403,4 +410,82 @@ class Plane {
     this.exitInfo.close();
     this.seatBought.close();
   }
+  
+  
+  
+  
+  float profitCalc(){
+
+    int numExits;
+    int numBuisSeats;
+    int numEconSeats;
+    int numBuisRows;
+    int numEconRows;
+    float exitSize = 2*this.buisSeatSize;
+    
+    if (planeSize >= 45) numExits = 4;
+    else if (planeSize >= 33) numExits = 3;
+    else numExits = 2;
+    
+    numBuisRows = int(((this.planeLength - numExits*exitSize)*businessPercent)/(this.buisSeatSize+this.buisSpacing));
+    if (economyPercent != 0) {
+    numEconRows = int((this.planeLength - numExits*exitSize - (this.buisSeatSize+this.buisSpacing)*numBuisRows)/(this.econSeatSize+this.econSpacing));
+    }
+    else numEconRows = 0;
+    
+    numBuisSeats = this.buisMidWidth*numBuisRows + this.buisSideWidth*2*numBuisRows;
+    numEconSeats = this.econMidWidth*numEconRows + this.econSideWidth*2*numEconRows;
+    
+    int planeSizeFeePercent = 50-planeSize; //check planeSize variable
+    
+    float economyPrice = 159.41 + (0.09364*this.distance);
+    economyPrice += planeSizeFeePercent/100.0*economyPrice;
+    
+    float businessPrice = (0.336*this.distance) + 82.2;
+    businessPrice += planeSizeFeePercent/100.0*businessPrice;
+    
+    float time = this.distance/850.0; //assume plane goes at a constant 850 km/h 
+    int numSeats = numEconSeats+numBuisSeats;                               
+    
+    float totalExpense = time*numSeats*85;
+    
+    
+    float income = this.totalPrice;
+    
+    
+    float profit = income-totalExpense;
+    
+    profit = round(profit*100);
+    profit = profit/100;
+    
+    return profit;
+  }
+
+  float economyPrice(){
+
+    int planeSizeFeePercent = 50-planeSize; //check planeSize variable
+    
+    float economyPrice = 159.41 + (0.09364*this.distance);
+    economyPrice += planeSizeFeePercent/100.0*economyPrice;
+    
+    economyPrice = round(economyPrice*100);
+    economyPrice = economyPrice/100;
+    
+    return economyPrice;
+  }
+  
+  float businessPrice(){
+
+    int planeSizeFeePercent = 50-planeSize; //check planeSize variable
+    
+    float businessPrice = (0.336*this.distance) + 82.2;
+    businessPrice += planeSizeFeePercent/100.0*businessPrice;
+    
+    businessPrice = round(businessPrice*100);
+    businessPrice = businessPrice/100;
+    
+    return businessPrice;
+  }
+  
+  
 }
