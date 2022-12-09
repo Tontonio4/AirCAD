@@ -136,7 +136,7 @@ class Plane {
     
     if (this.numBlocks == 1) {
       
-      block = new Seat_Block(x, height/2, 0, this.numBuisRows, this.numEconRows, this);
+      block = new Seat_Block(x, height/2, this.numBuisRows, this.numEconRows, this);
       parts.add(block);
       x += (this.buisSeatSize+this.buisSpacing)*this.numBuisRows + (this.econSeatSize+this.econSpacing)*this.numEconRows - this.econSpacing;
       exit = new Exit(x, height/2, this.exitSize, this);
@@ -147,7 +147,7 @@ class Plane {
       
       if (businessPercent >= 0.3 && businessPercent <= 0.5) {
         
-        block = new Seat_Block(x, height/2, 0, this.numBuisRows, 0, this);
+        block = new Seat_Block(x, height/2, this.numBuisRows, 0, this);
         parts.add(block);
         x += (this.buisSeatSize+this.buisSpacing)*this.numBuisRows - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -155,7 +155,7 @@ class Plane {
         x += this.exitSize;
         
         
-        block = new Seat_Block(x, height/2, 0, 0, this.numEconRows, this);
+        block = new Seat_Block(x, height/2, 0, this.numEconRows, this);
         parts.add(block);
         x += (this.econSeatSize+this.econSpacing)*this.numEconRows - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -167,7 +167,7 @@ class Plane {
         
         int this.numEconRowsPlaced = int((this.planeLength/2 - 1.5*this.exitSize - (this.buisSeatSize+this.buisSpacing)*this.numBuisRows)/(this.econSeatSize+this.econSpacing));
         
-        block = new Seat_Block(x, height/2, 0, this.numBuisRows, this.numEconRowsPlaced, this);
+        block = new Seat_Block(x, height/2, this.numBuisRows, this.numEconRowsPlaced, this);
         parts.add(block);
         x += ((this.buisSeatSize+this.buisSpacing)*this.numBuisRows + (this.econSeatSize+this.econSpacing)*this.numEconRowsPlaced) - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -177,7 +177,7 @@ class Plane {
         
         this.numEconRows -= this.numEconRowsPlaced;
         
-        block = new Seat_Block(x, height/2, 0, 0, this.numEconRows, this);
+        block = new Seat_Block(x, height/2, 0, this.numEconRows, this);
         parts.add(block);
         x += (this.econSeatSize+this.econSpacing)*this.numEconRows - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -188,7 +188,7 @@ class Plane {
         
         int this.numBuisRowsPlaced = int((this.planeLength/2 - 1.5*this.exitSize)/(this.buisSeatSize+this.buisSpacing));
         
-        block = new Seat_Block(x, height/2, 0, this.numBuisRowsPlaced, 0, this);
+        block = new Seat_Block(x, height/2, this.numBuisRowsPlaced, 0, this);
         parts.add(block);
         x += (this.buisSeatSize+this.buisSpacing)*this.numBuisRowsPlaced - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -197,7 +197,7 @@ class Plane {
         
         this.numBuisRows -= this.numBuisRowsPlaced;
         
-        block = new Seat_Block(x, height/2, 0, this.numBuisRows, this.numEconRows, this);
+        block = new Seat_Block(x, height/2, this.numBuisRows, this.numEconRows, this);
         parts.add(block);
         x += (this.econSeatSize+this.econSpacing)*this.numEconRows + (this.buisSeatSize+this.buisSpacing)*this.numBuisRows - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -212,7 +212,7 @@ class Plane {
       
         int this.numEconRowsPlaced = int(((this.planeLength - this.numExits*this.exitSize)*(1.0/3.0))/(this.econSeatSize+this.econSpacing));
         
-        block = new Seat_Block(x, height/2, 0, this.numBuisRows, 0, this);
+        block = new Seat_Block(x, height/2, this.numBuisRows, 0, this);
         parts.add(block);
         x += (this.buisSeatSize+this.buisSpacing)*this.numBuisRows - this.econSpacing;                
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -221,14 +221,14 @@ class Plane {
         
         this.numEconRows -= this.numEconRowsPlaced;
         
-        block = new Seat_Block(x, height/2, 0, 0, this.numEconRows, this);
+        block = new Seat_Block(x, height/2, 0, this.numEconRows, this);
         parts.add(block);
         x += (this.econSeatSize+this.econSpacing)*this.numEconRows - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
         parts.add(exit);
         x += this.exitSize;
         
-        block = new Seat_Block(x, height/2, 0, 0, this.numEconRowsPlaced, this);
+        block = new Seat_Block(x, height/2, 0, this.numEconRowsPlaced, this);
         parts.add(block);
         x += (this.econSeatSize+this.econSpacing)*this.numEconRowsPlaced - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -240,14 +240,14 @@ class Plane {
         int this.numEconRowsPlaced = int(((this.planeLength - this.numExits*this.exitSize)*(1.0/3.0))/(this.econSeatSize+this.econSpacing));
         this.numEconRows -= 2*this.numEconRowsPlaced;
         
-        block = new Seat_Block(x, height/2, 0, this.numBuisRows, this.numEconRows, this);
+        block = new Seat_Block(x, height/2, this.numBuisRows, this.numEconRows, this);
         parts.add(block);
         x += (this.buisSeatSize+this.buisSpacing)*this.numBuisRows + (this.econSeatSize+this.econSpacing)*this.numEconRows - this.econSpacing;                
         exit = new Exit(x, height/2, this.exitSize, this);
         parts.add(exit);
         x += this.exitSize;
         
-        block = new Seat_Block(x, height/2, 0, 0, this.numEconRowsPlaced, this);
+        block = new Seat_Block(x, height/2, 0, this.numEconRowsPlaced, this);
         parts.add(block);
         x += (this.econSeatSize+this.econSpacing)*this.numEconRowsPlaced - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -255,7 +255,7 @@ class Plane {
         x += this.exitSize;
         
         this.numEconRows -= this.numEconRowsPlaced;        
-        block = new Seat_Block(x, height/2, 0, 0, this.numEconRowsPlaced, this);
+        block = new Seat_Block(x, height/2, 0, this.numEconRowsPlaced, this);
         parts.add(block);
         x += (this.econSeatSize+this.econSpacing)*this.numEconRowsPlaced - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -268,7 +268,7 @@ class Plane {
         int this.numBuisRowsPlaced = int(((this.planeLength - this.numExits*this.exitSize)*(1.0/3.0))/(this.buisSeatSize+this.buisSpacing));
         int this.numEconRowsPlaced = int(((this.planeLength - this.numExits*this.exitSize)*(1.0/3.0))/(this.econSeatSize+this.econSpacing));
         
-        block = new Seat_Block(x, height/2, 0, this.numBuisRowsPlaced, 0, this);
+        block = new Seat_Block(x, height/2, this.numBuisRowsPlaced, 0, this);
         parts.add(block);
         x += (this.buisSeatSize+this.buisSpacing)*this.numBuisRowsPlaced - this.econSpacing;                
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -278,14 +278,14 @@ class Plane {
         this.numBuisRows -= this.numBuisRowsPlaced;
         this.numEconRows -= this.numEconRowsPlaced;
         
-        block = new Seat_Block(x, height/2, 0, this.numBuisRows, this.numEconRows, this);
+        block = new Seat_Block(x, height/2, this.numBuisRows, this.numEconRows, this);
         parts.add(block);
         x += (this.econSeatSize+this.econSpacing)*this.numEconRows + (this.buisSeatSize+this.buisSpacing)*this.numBuisRows - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
         parts.add(exit);
         x += this.exitSize;
         
-        block = new Seat_Block(x, height/2, 0, 0, this.numEconRowsPlaced, this);
+        block = new Seat_Block(x, height/2, 0, this.numEconRowsPlaced, this);
         parts.add(block);
         x += (this.econSeatSize+this.econSpacing)*this.numEconRowsPlaced - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -297,7 +297,7 @@ class Plane {
        
         int this.numBuisRowsPlaced = int(((this.planeLength - this.numExits*this.exitSize)*(1.0/3.0))/(this.buisSeatSize+this.buisSpacing));
         
-        block = new Seat_Block(x, height/2, 0, this.numBuisRowsPlaced, 0, this);
+        block = new Seat_Block(x, height/2, this.numBuisRowsPlaced, 0, this);
         parts.add(block);
         x += (this.buisSeatSize+this.buisSpacing)*this.numBuisRowsPlaced - this.econSpacing;                
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -306,14 +306,14 @@ class Plane {
         
         this.numBuisRows -= this.numBuisRowsPlaced;
         
-        block = new Seat_Block(x, height/2, 0, this.numBuisRows, 0, this);
+        block = new Seat_Block(x, height/2, this.numBuisRows, 0, this);
         parts.add(block);
         x += (this.buisSeatSize+this.buisSpacing)*this.numBuisRows - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
         parts.add(exit);
         x += this.exitSize;
         
-        block = new Seat_Block(x, height/2, 0, 0, this.numEconRows, this);
+        block = new Seat_Block(x, height/2, 0, this.numEconRows, this);
         parts.add(block);
         x += (this.econSeatSize+this.econSpacing)*this.numEconRows - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -325,7 +325,7 @@ class Plane {
         
         int this.numBuisRowsPlaced = int(((this.planeLength - this.numExits*this.exitSize)*(1.0/3.0))/(this.buisSeatSize+this.buisSpacing));
         
-        block = new Seat_Block(x, height/2, 0, this.numBuisRowsPlaced, 0, this);
+        block = new Seat_Block(x, height/2, this.numBuisRowsPlaced, 0, this);
         parts.add(block);
         x += (this.buisSeatSize+this.buisSpacing)*this.numBuisRowsPlaced - this.econSpacing;                
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -334,7 +334,7 @@ class Plane {
         
         this.numBuisRows -= this.numBuisRowsPlaced;
         
-        block = new Seat_Block(x, height/2, 0, this.numBuisRowsPlaced, 0, this);
+        block = new Seat_Block(x, height/2, this.numBuisRowsPlaced, 0, this);
         parts.add(block);
         x += (this.buisSeatSize+this.buisSpacing)*this.numBuisRowsPlaced - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
@@ -343,7 +343,7 @@ class Plane {
         
         this.numBuisRows -= this.numBuisRowsPlaced;
         
-        block = new Seat_Block(x, height/2, 0, this.numBuisRows, this.numEconRows, this);
+        block = new Seat_Block(x, height/2, this.numBuisRows, this.numEconRows, this);
         parts.add(block);
         x += (this.econSeatSize+this.econSpacing)*this.numEconRows + (this.buisSeatSize+this.buisSpacing)*this.numBuisRows - this.econSpacing;
         exit = new Exit(x, height/2, this.exitSize, this);
