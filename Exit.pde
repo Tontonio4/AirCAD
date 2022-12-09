@@ -1,4 +1,5 @@
 
+//sets the class and its variables (x and y pos with how large the scaler  for the plane is) with reference to the plane as well
 
 class Exit extends Plane_Part {
  
