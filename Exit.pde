@@ -17,12 +17,16 @@ class Exit extends Plane_Part {
      
   }
   
+  //draws the bathrooms
   void drawMe() {
     
     float bathroomSideSize;
     float bathroomMidSize;
     
+    //sets the fill color
     fill(140);
+    
+    //if there is 2 coridors in the plane, will draw a bathroom in between the isles as well as on the sides. 
     
     if (this.planeIn.numCorridors == 2) {
       
