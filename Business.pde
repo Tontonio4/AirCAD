@@ -41,7 +41,7 @@ class Business extends Row {
     y += this.corridorWidth;
     
     for (int i = 0; i < this.planeIn.buisSideWidth; i++) {
-      \\draws the seats and adjusts down
+      //draws the seats and adjusts down
       this.drawSeat(this.position.x, y);
       y += this.seatSize;
     }
