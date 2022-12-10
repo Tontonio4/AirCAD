@@ -1,4 +1,4 @@
-//comment wise, only this and ___ left
+//comment wise, only this left
 
 import g4p_controls.*;
 
