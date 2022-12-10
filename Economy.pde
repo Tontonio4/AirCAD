@@ -33,7 +33,7 @@ class Economy extends Row {
     y += this.corridorWidth;
 
     for (int i = 0; i < this.planeIn.econMidWidth; i++) {
-      \\draws the seats and adjusts down
+      //draws the seats and adjusts down
       this.drawSeat(this.position.x, y);
       y += this.seatSize;  
     }
