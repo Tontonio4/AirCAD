@@ -65,6 +65,14 @@ public void uploadButtonClicked(GButton source, GEvent event) { //_CODE_:uploadB
   plane.uploadPlane();
 } //_CODE_:uploadButton:688214:
 
+public void SaveButtonClicked(GButton source, GEvent event) { //_CODE_:SaveButton:225572:
+  savePlane();
+} //_CODE_:SaveButton:225572:
+
+public void LoadSaveClicked(GButton source, GEvent event) { //_CODE_:LoadSave:307373:
+  loadPlane();
+} //_CODE_:LoadSave:307373:
+
 
 
 // Create all the GUI controls. 
@@ -74,7 +82,7 @@ public void createGUI(){
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setMouseOverEnabled(false);
   surface.setTitle("Sketch Window");
-  window1 = GWindow.getWindow(this, "Window title", 0, 0, 400, 500, JAVA2D);
+  window1 = GWindow.getWindow(this, "Window title", 0, 0, 400, 440, JAVA2D);
   window1.noLoop();
   window1.setActionOnClose(G4P.KEEP_OPEN);
   window1.addDrawHandler(this, "win_draw1");
@@ -153,9 +161,15 @@ public void createGUI(){
   travelDistanceLabel.setTextAlign(GAlign.CENTER, GAlign.MIDDLE);
   travelDistanceLabel.setText("Travel Distance (km)");
   travelDistanceLabel.setOpaque(false);
-  uploadButton = new GButton(window1, 70, 381, 260, 80);
+  uploadButton = new GButton(window1, 20, 374, 110, 40);
   uploadButton.setText("UPLOAD");
   uploadButton.addEventHandler(this, "uploadButtonClicked");
+  SaveButton = new GButton(window1, 145, 374, 110, 40);
+  SaveButton.setText("SAVE");
+  SaveButton.addEventHandler(this, "SaveButtonClicked");
+  LoadSave = new GButton(window1, 270, 374, 110, 40);
+  LoadSave.setText("LOAD");
+  LoadSave.addEventHandler(this, "LoadSaveClicked");
   window1.loop();
 }
 
@@ -180,3 +194,5 @@ GLabel PlaneSizeText;
 GTextField travelDistance; 
 GLabel travelDistanceLabel; 
 GButton uploadButton; 
+GButton SaveButton; 
+GButton LoadSave; 
