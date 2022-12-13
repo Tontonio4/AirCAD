@@ -382,13 +382,16 @@ class Plane {
     
   }
   
+  //draws the plane and prints the prices to the screen
   void drawPlane() {
     
     ArrayList<Plane_Part> parts = calculatePlane();
     
+    //draws the body of the plane
     fill(240);
     rect(0, height/2 - this.planeWidth/2- (this.buisSeatSize*0.2), width, this.planeWidth + (this.buisSeatSize*0.4));
     
+    //draws the prices and profit info to the screen
     fill(0);
     textSize(30);
     text("Price Per Seat:", 20, 30);
@@ -409,30 +412,34 @@ class Plane {
     percentProfit = percentProfit/100;
     text("% Profit: " + percentProfit + "%", 1000, 50);
     
-    
+    //draws the parts
     for (int i = 0; i < parts.size(); i++) {
     
       parts.get(i).drawMe();
     }
   }
   
-  //uploads the plane to ticktsbuy txt file
+  //uploads the plane parts to ticktsbuy txt file
   void uploadPlane() {
     
     ArrayList<Plane_Part> parts = calculatePlane();
     
+    //list of all categories
     this.econPos = createWriter("TicketBuy/econPos.txt");
     this.buisPos = createWriter("TicketBuy/buisPos.txt");
     this.planeInfo = createWriter("TicketBuy/planeInfo.txt");
     this.exitInfo = createWriter("TicketBuy/exitInfo.txt");
     this.seatBought = createWriter("TicketBuy/seatBought.txt");
     
+    //uploads each plane part to be added to each category above
     for (int i = 0; i < parts.size(); i++) { 
       parts.get(i).upload();
     }
     
+    //prints the general information of the plane
     this.planeInfo.print(this.planeWidth +","+ this.numCorridors +","+ this.econSeatSize +","+ this.buisSeatSize +","+ this.econSeatPrice +","+ this.buisSeatPrice);
     
+    //indivudually prints the information in each category and then closes each of them
     this.econPos.flush();
     this.buisPos.flush();
     this.planeInfo.flush();
@@ -448,7 +455,7 @@ class Plane {
   
   
   
-  
+  //calculates the profit that the plane will earn based on the expenses caused by the plane size and distance travelled
   float profitCalc(){
 
     int planeSizeFeePercent = 50-planeSize; //check planeSize variable
@@ -459,41 +466,53 @@ class Plane {
     //float businessPrice = (0.336*this.distance) + 82.2;
     //businessPrice += planeSizeFeePercent/100.0*businessPrice;
     
+    //calculates the expenses incurred
     float time = this.distance/850.0; //assume plane goes at a constant 850 km/h 
     int numSeats = this.numEconSeats+this.numBuisSeats;                               
     
     float totalExpense = time*numSeats*85;
     
+    //gets the income
     float income = this.totalPrice;
     
+    //calculates profit
     profit = income-totalExpense;
     
     profit = round(profit*100);
     profit = profit/100;
     
+    //returns the profit value
     return profit;
   }
 
+//gets the total price from all the economy seats
   float economyPrice(){
 
+//reduces the cost of seats the larger the plane is, is how it works in real life
     int planeSizeFeePercent = 50-planeSize; //check planeSize variable
     
+    //calculates the price of economy seats
     float economyPrice = 159.41 + (0.09364*this.distance);
     economyPrice += planeSizeFeePercent/100.0*economyPrice;
     
+    //fixes it to a 2 didget decimal value because its money
     economyPrice = round(economyPrice*100);
     economyPrice = economyPrice/100;
     
     return economyPrice;
   }
   
+  //gets the total price from all the buisness seats
   float businessPrice(){
 
+//reduces the cost of seats the larger the plane is, is how it works in real life
     int planeSizeFeePercent = 50-planeSize; //check planeSize variable
     
+    //calculates the price of buisness seats
     float businessPrice = (0.336*this.distance) + 82.2;
     businessPrice += planeSizeFeePercent/100.0*businessPrice;
     
+    //fixes it to a 2 didget decimal value because its money
     businessPrice = round(businessPrice*100);
     businessPrice = businessPrice/100;
     
