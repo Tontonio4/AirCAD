@@ -1,7 +1,9 @@
 //comment wise, only this left
 
+//inports GUI tools
 import g4p_controls.*;
 
+//sets global variables
 float economyPercent;
 float businessPercent;
 
@@ -17,6 +19,7 @@ int planeSize;
 
 Plane plane;
 
+//sets up the screen, GUI (and its values) and plane, then updates the planes values
 void setup(){
   size(1300, 700);
   createGUI();
@@ -27,7 +30,7 @@ void setup(){
   
 }
 
-
+//draws the plane after updating its (and the GUI's) values
 void draw(){
   
   background(255);
@@ -36,6 +39,7 @@ void draw(){
   plane.drawPlane();
 }
 
+//gets the value that each of the sliders is set to then sets if to what its coorisponding global variable is
 void getValues() {
   businessSidesWidth = int(BusinessSideDrop.getSelectedText());
   businessMiddleWidth = int(BusinessMidDrop.getSelectedText());
@@ -49,6 +53,7 @@ void getValues() {
   businessPercent = BusinessPercentage.getValueI()/100.0;
 }
 
+//Saves what the current values of all the sliders are in a save txt file
 void savePlane () {
   
   PrintWriter saveFile = createWriter("save.txt");
@@ -58,6 +63,7 @@ void savePlane () {
   saveFile.close();
 }
 
+//loads the slider values from the save txt file
 void loadPlane () {
   
   String[] saveFile = loadStrings("save.txt");
